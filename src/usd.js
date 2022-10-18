@@ -1,17 +1,36 @@
 // not implemented yet
 
-function GetCardPriceInUsd(gameId, itemId) {
+import https from 'https';
+import express from 'express';
+
+const app = express();
+app.use(express.urlencoded({extended:true}));
+
+async function itemPricing(appId, itemHash) {
     return new Promise( (resolve) => {
         setTimeout( () => {
 
-            let medium_value = 0.05;
+            const url = `https://steamcommunity.com/market/priceoverview/?appid=${appId}&market_hash_name=${itemHash}&currency=1`;
 
-            if(gameId === 570 || gameid === 80924 || gameid === 624820) // Dota, TF2 and CSGO.
-                medium_value = (medium_value / 1.15) - 0.01;
-            else
-                medium_value = (medium_value / 1.05) - 0.01;
+            https.get(url, (res) => {
+                res.on("data", (_) => {
+                    const data = JSON.parse(_);
+                    let lowest_price = parseFloat(data.lowest_price.slice(1).replace(",", "."));
+                    
+                    resolve(lowest_price);
+                })
+            })
+        }, 2000)
+    })
+}
 
-            console.log("Item market value: $" + medium_value);
+function GetCardPriceInUsd(appId, itemHash) {
+    return new Promise( (resolve) => {
+        setTimeout( async () => {
+
+            let medium_value = await itemPricing(appId, itemHash);
+
+            console.log("Item market value: $" + medium_value.toFixed(2));
 
             resolve(medium_value);
         }, 2000)

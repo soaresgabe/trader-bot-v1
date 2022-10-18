@@ -16,7 +16,7 @@ function GetGemPrice() {
 
                     let gemPrice = parseFloat(median_value.slice(1).replace(",", "."));  
                     
-                    gemPrice /= (1000 * 0.1);
+                    gemPrice /= 1000;
 
                     resolve(gemPrice);
                 })
@@ -38,7 +38,7 @@ async function GetCardPriceInGems(appid, itemid) {
                     const goo_value = data.goo_value;
                     const cardPrice = parseFloat(goo_value.replace(",", "."));
 
-                    console.log("Item gem value: $" + cardPrice * gemPrice);
+                    console.log("Item gem value: $" + (cardPrice * gemPrice).toFixed(2));
 
                     resolve(cardPrice * gemPrice);
                 })
