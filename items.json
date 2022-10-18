@@ -1,3 +1,29 @@
 {
-    "hashname": "Almond%20the%20Frondillo"
+    "game": "DOTA",
+    "items": {
+        "id2" : {
+            "hashname": "570-Bounty%20Hunter%20(Trading%20Card)"
+        },
+        "id3" : {
+            "hashname": "570-Phantom%20Lancer%20(Trading%20Card)"
+        },
+        "id4" : {
+            "hashname": "570-Razor%20(Trading%20Card)"
+        },
+        "id5" : {
+            "hashname": "570-Riki%20(Trading%20Card)"
+        },
+        "id6" : {
+            "hashname": "570-Tidehunter%20(Trading%20Card)"
+        },
+        "id7" : {
+            "hashname": "570-Tiny%20(Trading%20Card)"
+        },
+        "id8" : {
+            "hashname": "570-Tusk%20(Trading%20Card)"
+        },
+        "id9" : {
+            "hashname": "570-Vengeful%20Spirit%20(Trading%20Card)"
+        }
+    }
 }
